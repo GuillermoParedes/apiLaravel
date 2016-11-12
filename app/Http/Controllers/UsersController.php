@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Uuid;
 use App\User;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use App\Transformers\userTransformer;
+use App\Http\Requets;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers
+ */
 class UsersController extends Controller
 {
     use Helpers;
@@ -22,13 +28,12 @@ class UsersController extends Controller
 //        return $this->response->collection(User::all(), new UserTransformer());
         return $this->response->paginator(User::paginate(10), new UserTransformer());
     }
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateUserRequest $request
+     * @return \Dingo\Api\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\CreateUserRequest $request)
     {
         $data = $request->except('password_confirmation');
         $data['password'] = bcrypt($data['password']);
