@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
-//use Dingo\Api\Http\FormRequest as Request;
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends Request
-
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

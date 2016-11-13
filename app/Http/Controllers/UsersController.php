@@ -7,7 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Dingo\Api\Routing\Helpers;
 use App\Transformers\userTransformer;
-use App\Http\Requets;
+use App\Http\Requests;
+use App\Http\Requests\User\CreateUserRequest;
 
 /**
  * Class UsersController
@@ -30,10 +31,10 @@ class UsersController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
+     * @param Requests\User\CreateUserRequest $request
      * @return \Dingo\Api\Http\Response
      */
-    public function store(Requests\CreateUserRequest $request)
+    public function store(CreateUserRequest $request)
     {
         $data = $request->except('password_confirmation');
         $data['password'] = bcrypt($data['password']);
