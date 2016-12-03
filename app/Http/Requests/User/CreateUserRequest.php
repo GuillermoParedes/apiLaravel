@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Requests\User;
-
-use Illuminate\Foundation\Http\FormRequest;
+use Dingo\Api\Http\FormRequest as FormRequest;
 
 class CreateUserRequest extends FormRequest
 {
